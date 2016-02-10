@@ -1,7 +1,7 @@
 package hello;
 
-
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,9 +18,11 @@ public class MainController {
         http://stackoverflow.com/questions/25356781/spring-boot-remove-whitelabel-error-page
     }*/
     
-    @RequestMapping("/GetVoterInfo")
+    // https://spring.io/guides/gs/handling-form-submission/
+    @RequestMapping(value = "/GetVoterInfo", method = RequestMethod.POST)
     public String GetVoterInfo() {
         return "Que pasa wey!";
+        //http://stackoverflow.com/questions/28649561/spring-boot-post-http-request
     }
     
     @RequestMapping("/ChangePassword")
