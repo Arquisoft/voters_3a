@@ -7,10 +7,12 @@ Voters Subsystem
 
 Authors
 =======
-* Raul
-* Carlos
-* David
 * Amir
+* Carlos
+* David González García
+* Raul
+
+
 
 
 
