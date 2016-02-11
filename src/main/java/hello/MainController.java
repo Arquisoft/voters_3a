@@ -1,16 +1,24 @@
 package hello;
 
+import javax.validation.Valid;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import types.UserInfo;
+import types.UserPass;
+
+@Controller
 @RestController
 public class MainController {
 
-    @RequestMapping("/")
+    /*@RequestMapping("/")
     public String landing() {
         return "User Management Service";
-    }
+    }*/
     
     /*@RequestMapping("/error")
     public String errorPage() {
@@ -18,15 +26,13 @@ public class MainController {
         http://stackoverflow.com/questions/25356781/spring-boot-remove-whitelabel-error-page
     }*/
     
-    // https://spring.io/guides/gs/handling-form-submission/
-    @RequestMapping(value = "/GetVoterInfo", method = RequestMethod.POST)
-    public String GetVoterInfo() {
-        return "Que pasa wey!";
-        //http://stackoverflow.com/questions/28649561/spring-boot-post-http-request
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public UserInfo GetVoterInfo(@RequestBody @Valid final UserPass message) {
+        return new UserInfo("David","1234546789J","uo212486", "123A");
     }
     
-    @RequestMapping("/ChangePassword")
+    /*@RequestMapping("/ChangePassword")
     public UserInfo user() {
         return new UserInfo("pepe",0);
-    }
+    }*/
 }
