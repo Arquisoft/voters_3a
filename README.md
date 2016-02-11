@@ -7,10 +7,10 @@ Voters Subsystem
 
 Authors
 =======
-* Amir
-* Carlos
+* Amir Housein Tofigh Halati
+* Carlos Lopez de Juan
 * David González García
-* Raul
+* Raul Barba Tamargo
 
 
 
