@@ -42,14 +42,15 @@ public class MainControllerTest {
 	public void getLanding() throws Exception {
 		String userURI = base.toString() + "/user";  
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
-		assertThat(response.getBody(), equalTo("User Management Service"));
+		assertThat(response.hasBody(), equalTo(true));
 	}
 	
 	@Test
 	public void getUser() throws Exception {
 		String userURI = base.toString() + "/user";  
-		ResponseEntity<String> response = template.getForEntity(userURI, String.class);
-		UserInfo expected = new UserInfo("pepe",0);
+		ResponseEntity<UserInfo> response = template.getForEntity(userURI, UserInfo.class);
+		UserInfo expected = new UserInfo("David","1234546789J","uo212486", "123A");
+		assertThat(response.hasBody(), equalTo(true));
 	}
 
 }
