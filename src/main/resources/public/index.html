@@ -3,11 +3,13 @@
 <head>
 	<title>Voters</title>
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 	<div id="main" class="pure-g">
-		<div id="voters-info" class="pure-u-1 pure-u-md-1-2">
+		<h1 class="pure-u-1">Voters</h1>
+		<div id="voters-info" class="pure-u-1-2">
 			<form action="/user" method="post"  class="pure-form pure-form-aligned">
 				<fieldset>
 					<legend>Voter info</legend>
@@ -28,7 +30,7 @@
 			</form>
 		</div>
 
-		<div id="voters-passwd" class="pure-u-1 pure-u-md-1-2">
+		<div id="voters-passwd" class="pure-u-1-2">
 			<form action="/passwd" method="post" class="pure-form pure-form-aligned">
 				<fieldset>
 					<legend>Passwd</legend>
@@ -52,8 +54,8 @@
 					</div>
 				</fieldset>
 			</form>
-
 		</div>
+		
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<script src="app.js"></script>

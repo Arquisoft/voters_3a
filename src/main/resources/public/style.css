@@ -1,0 +1,17 @@
+body {
+	background: #eee;
+}
+
+#main {
+	width: 1000px;
+	margin: 35px auto;
+	background: #fff;
+	padding: 25px;
+	border-radius: 3px;
+	box-shadow: 0 0 5px rgba(0,0,0,.1);
+}
+
+
+.pure-form legend {
+	font-size: 125%;
+}
