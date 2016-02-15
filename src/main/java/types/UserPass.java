@@ -25,6 +25,13 @@ public class UserPass {
 		return password;
 	}
 
+	@Override
+	public String toString() {
+		return "UserPass [login=" + login + ", password=" + password + "]";
+	}
+	
+	
+
 	
 	
 	
