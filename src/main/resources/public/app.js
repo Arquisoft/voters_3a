@@ -25,7 +25,7 @@ $("#voters-info form").submit(
 		    // Fire off the request
 		    console.log("Request", data);
 		    request = $.ajax({
-		        url: "/user2",
+		        url: "/user",
 		        type: "post",
 		        contentType: "application/json",
 		        dataType: "json",
