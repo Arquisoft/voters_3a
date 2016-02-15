@@ -52,8 +52,10 @@ public class MainController {
     
     @RequestMapping(value = "/ChangePassword", method = RequestMethod.POST)
     public UserPass user(@RequestBody @Valid final ChangePass message) {
-    	if(message.getLogin().split("@")[0].equals(pass1.getLogin()) &&  message.getOldPassword().equals(pass1.getPassword()))
+    	if(message.getLogin().split("@")[0].equals(pass1.getLogin()) &&  message.getOldPassword().equals(pass1.getPassword())){
+    		pass1 = new UserPass(message.getLogin(), message.getNewPassword());
     		return pass1;
+    	}
     	return null;
     }
 }
