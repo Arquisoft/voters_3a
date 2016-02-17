@@ -28,7 +28,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
-import junit.framework.Assert;
 
 import org.springframework.http.MediaType;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -119,7 +118,7 @@ public class MainControllerTest {
 				.content("{\"login\":\"uo212486@mail.com\", \"password\": \"password\"}")
 		).andExpect(status().isOk())
 		 .andExpect(jsonPath("name", equalTo("David")))
-		 .andExpect(jsonPath("pollingStationCode", equalTo("123A")))
+		 .andExpect(jsonPath("pollingStationCode", equalTo("123A")));
 		 //.andExpect(jsonPath("pollingStationCode").value("123A"))
 
 	}
