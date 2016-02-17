@@ -27,6 +27,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import org.springframework.http.MediaType;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+
+import types.ChangePass;
 import types.UserInfo;
 import types.UserPass;
 import voterAccess.Application;
@@ -218,4 +220,22 @@ public class MainControllerTest {
 		ui2 = new UserInfo("pepe", "50", "email@hotmail.com", "1");
 		assertFalse(ui1.equals(ui2));
 	}
+	
+	//ChangePass 
+	@Test
+	public void testUserChangePass() throws Exception {
+		String login="loglog"; 
+		String pass="paspas";
+		String passNew="masmas";
+		/*UserPass up = new UserPass(login,pass);
+		assertTrue(up.getPassword().equals(pass));*/
+		ChangePass cp = new ChangePass();
+		assertNull(cp.getLogin());
+		assertNull(cp.getNewPassword());
+		assertNull(cp.getOldPassword());
+		cp = new ChangePass(login,pass,passNew);
+		assertTrue(login.equals(cp.getLogin()));
+		assertTrue(pass.equals(cp.getOldPassword()));
+		assertTrue(passNew.equals(cp.getNewPassword()));
+	}	
 }
