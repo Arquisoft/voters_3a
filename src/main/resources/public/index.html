@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Voters</title>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div id="main" class="pure-g">
+		<h1 class="pure-u-1">Voters</h1>
+		<div id="voters-info" class="pure-u-1-2">
+			<form action="/user" method="post"  class="pure-form pure-form-aligned">
+				<fieldset>
+					<legend>Voter info</legend>
+					<div class="pure-control-group">
+						<label for="login">Login</label>
+						<input id="login" name="login" type="email" placeholder="Login">
+					</div>
+
+					<div class="pure-control-group">
+						<label for="password">Password</label>
+						<input id="password" name="password" type="password" placeholder="password">
+					</div>
+
+					<div class="pure-controls">
+						<button type="submit" class="pure-button pure-button-primary">Submit</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+
+		<div id="voters-passwd" class="pure-u-1-2">
+			<form action="/passwd" method="post" class="pure-form pure-form-aligned">
+				<fieldset>
+					<legend>Passwd</legend>
+					<div class="pure-control-group">
+						<label for="name">Username</label> <input id="name" type="email"
+							placeholder="Username">
+					</div>
+
+					<div class="pure-control-group">
+						<label for="password">Old password</label> <input id="password"
+							type="password" placeholder="Password">
+					</div>
+					
+					<div class="pure-control-group">
+						<label for="password">New password</label> <input id="password"
+							type="password" placeholder="Password">
+					</div>
+
+					<div class="pure-controls">
+						<button type="submit" class="pure-button pure-button-primary">Submit</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
