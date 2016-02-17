@@ -121,7 +121,7 @@ public class MainControllerTest {
 		 .andExpect(jsonPath("name", equalTo("David")))
 		 .andExpect(jsonPath("pollingStationCode", equalTo("123A")))
 		 //.andExpect(jsonPath("pollingStationCode").value("123A"))
-		;
+
 	}
 
 	@Test
@@ -130,7 +130,6 @@ public class MainControllerTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{\"login\":\"emailnovalido666@mail.com\", \"password\": \"password\"}")
 		).andExpect(status().isNotFound());		 
-		;
 	}
 	
 	@Test
@@ -139,7 +138,6 @@ public class MainControllerTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{\"login\":\"uo212486@mail.com\", \"password\": \"pas\"}")
 		).andExpect(status().isNotFound());		 
-		;
 	}
 	
 	@Test
@@ -147,24 +145,23 @@ public class MainControllerTest {
 		mvc.perform(post("/user")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{\"login\":\"uo212486.com\", \"password\": \"password\"}")
-		).andExpect(status().isNotFound());		 
-		;
+		).andExpect(status().isNotFound());		 	
 	}
+	
 	@Test
 	public void postUserInvalidMailFormat_domain() throws Exception {		
 		mvc.perform(post("/user")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{\"login\":\"uo212486@mail\", \"password\": \"password\"}")
-		).andExpect(status().isNotFound());		 
-		;
+		).andExpect(status().isNotFound());			
 	}
+	
 	@Test
 	public void postUserInvalidMailFormatDomain_wrongPass() throws Exception {		
 		mvc.perform(post("/user")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{\"login\":\"uo212486@mail\", \"password\": \"pa\"}")
-		).andExpect(status().isNotFound());		 
-		;
+		).andExpect(status().isNotFound());		
 	}
 	
 
@@ -182,8 +179,7 @@ public class MainControllerTest {
 		String pass="paspas";
 		UserPass up = new UserPass(login,pass);
 		assertTrue(up.toString().equals("UserPass [login=" + login + ", password=" + pass + "]"));
-	}
-	
+	}	
 	
 	//UserInfo
 	@Test
@@ -226,7 +222,5 @@ public class MainControllerTest {
 		ui1 = new UserInfo("pepe", "50", "mail@dom.com", "1");
 		ui2 = new UserInfo("pepe", "50", "email@hotmail.com", "1");
 		assertFalse(ui1.equals(ui2));
-
 	}
-
 }
