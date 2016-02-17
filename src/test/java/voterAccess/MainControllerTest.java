@@ -2,11 +2,7 @@ package voterAccess;
 
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-
 import java.net.URL;
-
-import javax.validation.constraints.AssertTrue;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +24,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
-import junit.framework.Assert;
 
 import org.springframework.http.MediaType;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -119,9 +114,9 @@ public class MainControllerTest {
 				.content("{\"login\":\"uo212486@mail.com\", \"password\": \"password\"}")
 		).andExpect(status().isOk())
 		 .andExpect(jsonPath("name", equalTo("David")))
-		 .andExpect(jsonPath("pollingStationCode", equalTo("123A")))
+		 .andExpect(jsonPath("pollingStationCode", equalTo("123A")));
 		 //.andExpect(jsonPath("pollingStationCode").value("123A"))
-		;
+
 	}
 
 	@Test
@@ -130,7 +125,6 @@ public class MainControllerTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{\"login\":\"emailnovalido666@mail.com\", \"password\": \"password\"}")
 		).andExpect(status().isNotFound());		 
-		;
 	}
 	
 	@Test
@@ -139,7 +133,6 @@ public class MainControllerTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{\"login\":\"uo212486@mail.com\", \"password\": \"pas\"}")
 		).andExpect(status().isNotFound());		 
-		;
 	}
 	
 	@Test
@@ -147,24 +140,23 @@ public class MainControllerTest {
 		mvc.perform(post("/user")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{\"login\":\"uo212486.com\", \"password\": \"password\"}")
-		).andExpect(status().isNotFound());		 
-		;
+		).andExpect(status().isNotFound());		 	
 	}
+	
 	@Test
 	public void postUserInvalidMailFormat_domain() throws Exception {		
 		mvc.perform(post("/user")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{\"login\":\"uo212486@mail\", \"password\": \"password\"}")
-		).andExpect(status().isNotFound());		 
-		;
+		).andExpect(status().isNotFound());			
 	}
+	
 	@Test
 	public void postUserInvalidMailFormatDomain_wrongPass() throws Exception {		
 		mvc.perform(post("/user")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{\"login\":\"uo212486@mail\", \"password\": \"pa\"}")
-		).andExpect(status().isNotFound());		 
-		;
+		).andExpect(status().isNotFound());		
 	}
 	
 
@@ -182,8 +174,7 @@ public class MainControllerTest {
 		String pass="paspas";
 		UserPass up = new UserPass(login,pass);
 		assertTrue(up.toString().equals("UserPass [login=" + login + ", password=" + pass + "]"));
-	}
-	
+	}	
 	
 	//UserInfo
 	@Test
@@ -226,8 +217,5 @@ public class MainControllerTest {
 		ui1 = new UserInfo("pepe", "50", "mail@dom.com", "1");
 		ui2 = new UserInfo("pepe", "50", "email@hotmail.com", "1");
 		assertFalse(ui1.equals(ui2));
-
-
 	}
-
 }
