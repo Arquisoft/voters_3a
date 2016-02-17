@@ -227,7 +227,6 @@ public class MainControllerTest {
 		ui2 = new UserInfo("pepe", "50", "email@hotmail.com", "1");
 		assertFalse(ui1.equals(ui2));
 
-
 	}
 
 }
