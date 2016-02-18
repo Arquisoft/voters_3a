@@ -161,12 +161,39 @@ public class MainControllerTest {
 		).andExpect(status().isNotFound());		
 	}
 	
+	// COMPROBACION DE CAMBIO DE PASS 
+	
+	
+	@Test
+	public void postUserChangePass() throws Exception {		
+		//comprueba PASS Original
+		mvc.perform(post("/user")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content("{\"login\":\"uo212486@mail.com\", \"password\": \"password\"}")
+		).andExpect(status().isOk())
+		 .andExpect(jsonPath("name", equalTo("David")))
+		 .andExpect(jsonPath("pollingStationCode", equalTo("123A")));
+		
+		//cambia pass
+		mvc.perform(post("/ChangePassword")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content("{\"login\":\"uo212486@mail.com\", \"password\": \"password\"}")
+		).andExpect(status().isNotFound());		
+		
+		//comprueba pass nueva
+		mvc.perform(post("/user")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content("{\"login\":\"uo212486@mail.com\", \"password\": \"pass2\"}")
+		).andExpect(status().isOk())
+		 .andExpect(jsonPath("name", equalTo("David")))
+		 .andExpect(jsonPath("pollingStationCode", equalTo("123A")));
+		
+	}
+	
 
 	/*
 	 * 
-	 * 
 	 * BLOQUE DE TESTS DEDICADOS AL: DOMINIO
-	 * 
 	 * 
 	 */
 	//UserPass
