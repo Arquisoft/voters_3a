@@ -12,7 +12,7 @@ public class UserPass {
 	
 	public UserPass(String login, String password) {
 		this.login = login;
-		this.password = password;
+		this.password = Encrypter.encrypt(password);
 	}
 
 	@XmlElement

@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import types.ChangePass;
-import types.UserInfo;
-import types.UserPass;
+import types.*;
 import exceptions.*;
 
 @Controller
@@ -36,18 +34,18 @@ public class MainController {
 	// Probar con {"login":"uo212486@uniovi.es","password":"password"}
 	@RequestMapping(value = "/user", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<UserInfo> GetVoterInfo(@RequestBody @Valid final UserPass userPass) {
+	public ResponseEntity<UserInfo> GetVoterInfo(@RequestBody @Valid final UserPass userPass) throws Exception{
 		if (userPass.getLogin().split("@")[0].equals(pass1.getLogin())
-				&& userPass.getPassword().equals(pass1.getPassword()))
+				&& userPass.getPassword().equals(Encrypter.decrypt(pass1.getPassword())))
 			return new ResponseEntity<UserInfo>(usuario1, HttpStatus.OK);
 		return new ResponseEntity<UserInfo>(HttpStatus.NOT_FOUND);
 		// throw new UserNotFoundException(userPass);
 	}
 
 	@RequestMapping(value = "/ChangePassword", method = RequestMethod.POST)
-	public UserPass user(@RequestBody @Valid final ChangePass message) {
+	public UserPass user(@RequestBody @Valid final ChangePass message) throws Exception{
 		if (message.getLogin().split("@")[0].equals(pass1.getLogin())
-				&& message.getOldPassword().equals(pass1.getPassword())) {
+				&& message.getOldPassword().equals(Encrypter.decrypt(pass1.getPassword()))) {
 			pass1 = new UserPass(message.getLogin(), message.getNewPassword());
 			return pass1;
 		}
