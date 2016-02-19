@@ -1,9 +1,12 @@
 package dbManagement;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import model.Voter;
 
 public class DBManagement {
 
+	@Autowired
 	private VoterRepository voterRepository;
 	
 	public DBManagement() {

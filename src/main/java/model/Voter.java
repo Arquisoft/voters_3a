@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Dario Rodríguez García (@dariorg on GitHub)
@@ -25,25 +26,26 @@ public class Voter {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(nullable = false)
+	@NotNull
 	private String nombre;
 	
 	@Column(nullable = false, unique = true)
 	private String email;
 	
-	@Column(nullable = false)
+	@NotNull
 	private String nif;
 	
-	@Column(nullable = false)
+	@NotNull
 	private String password;
 
 	// Polling station
-	private int pollingStationCode;
+	@NotNull
+	private Long pollingStationCode;
 
 	public Voter() {
 	}
 
-	public Voter(String nombre, String email, String password, String nif, int pollingStationCode) {
+	public Voter(String nombre, String email, String password, String nif, long pollingStationCode) {
 		this.nombre = nombre;
 		this.email = email;
 		this.password = password;
@@ -75,11 +77,11 @@ public class Voter {
 		return nif;
 	}
 
-	public int getPollingStationCode() {
+	public long getPollingStationCode() {
 		return pollingStationCode;
 	}
 
-	public void setPollingStationCode(int pollingStationCode) {
+	public void setPollingStationCode(long pollingStationCode) {
 		this.pollingStationCode = pollingStationCode;
 	}
 
