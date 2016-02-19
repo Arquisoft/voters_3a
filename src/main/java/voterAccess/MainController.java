@@ -38,7 +38,7 @@ public class MainController {
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<UserInfo> GetVoterInfo(@RequestBody @Valid final UserPass userPass) {
 		if (userPass.getLogin().split("@")[0].equals(pass1.getLogin())
-				&& userPass.getPassword().equals(pass1.getPassword()))
+				&& userPass.getPassword().equals(Encrypter.decrypt(pass1.getPassword())))
 			return new ResponseEntity<UserInfo>(usuario1, HttpStatus.OK);
 		return new ResponseEntity<UserInfo>(HttpStatus.NOT_FOUND);
 		// throw new UserNotFoundException(userPass);
@@ -47,7 +47,7 @@ public class MainController {
 	@RequestMapping(value = "/ChangePassword", method = RequestMethod.POST)
 	public UserPass user(@RequestBody @Valid final ChangePass message) {
 		if (message.getLogin().split("@")[0].equals(pass1.getLogin())
-				&& message.getOldPassword().equals(pass1.getPassword())) {
+				&& message.getOldPassword().equals(Encrypter.decrypt(pass1.getPassword()))) {
 			pass1 = new UserPass(message.getLogin(), message.getNewPassword());
 			return pass1;
 		}
