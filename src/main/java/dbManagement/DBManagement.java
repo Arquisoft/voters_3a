@@ -15,7 +15,7 @@ import types.UserPass;
 @Transactional
 public class DBManagement {
 
-	@Autowired
+	//@Autowired
 	private VoterRepository voterRepository;
 
 	public DBManagement() {
