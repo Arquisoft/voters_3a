@@ -21,15 +21,6 @@ public class MainController {
 	public static UserInfo usuario1 = new UserInfo("David", "1234546789J", "uo212486", "123A");
 	public static UserPass pass1 = new UserPass("uo212486", "password");
 
-	/*
-	 * @RequestMapping("/") public String landing() { return
-	 * "User Management Service"; }
-	 */
-	
-	// http://stackoverflow.com/questions/25356781/spring-boot-remove-whitelabel-error-page
-	/*
-	 * @RequestMapping("/error") public String errorPage() { return "Error"; }
-	 */
 
 	// Probar con {"login":"uo212486@uniovi.es","password":"password"}
 	@RequestMapping(value = "/user", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE,
