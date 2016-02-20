@@ -22,9 +22,15 @@ public class MainController {
 	public static UserPass pass1 = new UserPass("uo212486", "password");
 
 
-	@RequestMapping(value = "/user", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE,
-			MediaType.APPLICATION_XML_VALUE })
+	@RequestMapping(
+			value = "/user",
+			method = RequestMethod.POST,
+			produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
+			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<UserInfo> GetVoterInfo(@RequestBody @Valid final UserPass userPass) throws Exception{
+		if (userPass == null) {
+			//throw new ResourceNotFoundException();
+		}
 		if (userPass.getLogin().split("@")[0].equals(pass1.getLogin())
 				&& userPass.getPassword().equals(Encrypter.decrypt(pass1.getPassword())))
 			return new ResponseEntity<UserInfo>(usuario1, HttpStatus.OK);
@@ -33,7 +39,11 @@ public class MainController {
 		// throw new UserNotFoundException(userPass);
 	}
 
-	@RequestMapping(value = "/ChangePassword", method = RequestMethod.POST)
+	@RequestMapping(
+			value = "/ChangePassword",
+			method = RequestMethod.POST,
+			produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
+			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public UserPass user(@RequestBody @Valid final ChangePass message) throws Exception{
 		if (message.getLogin().split("@")[0].equals(pass1.getLogin())
 				&& message.getOldPassword().equals(Encrypter.decrypt(pass1.getPassword()))) {

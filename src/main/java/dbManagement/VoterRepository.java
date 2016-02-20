@@ -1,6 +1,7 @@
 package dbManagement;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import model.Voter;
 
@@ -11,6 +12,7 @@ import model.Voter;
  * @author David González García (@davidglezz)
  */
 
+@Repository
 public interface VoterRepository extends CrudRepository<Voter, Long> {
 		
 	public Voter findByEmail(String email);
@@ -19,15 +21,15 @@ public interface VoterRepository extends CrudRepository<Voter, Long> {
 	@SuppressWarnings("unchecked")
 	public Voter save(Voter entity);
 
-	public Voter findOne(Long primaryKey);
+	//public Voter findOne(Long primaryKey);
 
-	public Iterable<Voter> findAll();
+	//public Iterable<Voter> findAll();
 
-	public long count();
+	//public long count();
 
-	public void delete(Voter entity);
+	//public void delete(Voter entity);
 
-	public boolean exists(Long primaryKey);
+	//public boolean exists(Long primaryKey);
     
 }
 

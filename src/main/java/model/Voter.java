@@ -10,14 +10,16 @@ import javax.validation.constraints.NotNull;
 
 /**
  * @author Dario Rodríguez García (@dariorg on GitHub)
+ * @author David González García (@davidglezz on GitHub)
  * 
- * @version 2016.02.11
+ * @version 2016.02.20
  *
- *          Clase POJO del modelo de dominio que recoge los datos de los
+ *          Entidad del modelo de dominio que recoge los datos de los
  *          ciudadanos censados así como el colegio electoral/mesa en el que
  *          emitir su voto.
  * 
  */
+
 @Entity
 @Table(name = "VOTER")
 public class Voter {
@@ -91,6 +93,80 @@ public class Voter {
 
 	public void setNif(String nif) {
 		this.nif = nif;
+	}
+	
+	public boolean same(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Voter other = (Voter) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (nif == null) {
+			if (other.nif != null)
+				return false;
+		} else if (!nif.equals(other.nif))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (pollingStationCode == null) {
+			if (other.pollingStationCode != null)
+				return false;
+		} else if (!pollingStationCode.equals(other.pollingStationCode))
+			return false;
+		return true;
+	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((nif == null) ? 0 : nif.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Voter other = (Voter) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (nif == null) {
+			if (other.nif != null)
+				return false;
+		} else if (!nif.equals(other.nif))
+			return false;
+		return true;
 	}
 
 	@Override
