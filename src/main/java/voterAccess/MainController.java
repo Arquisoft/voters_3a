@@ -22,13 +22,13 @@ public class MainController {
 	public static UserPass pass1 = new UserPass("uo212486", "password");
 
 
-	// Probar con {"login":"uo212486@uniovi.es","password":"password"}
 	@RequestMapping(value = "/user", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<UserInfo> GetVoterInfo(@RequestBody @Valid final UserPass userPass) throws Exception{
 		if (userPass.getLogin().split("@")[0].equals(pass1.getLogin())
 				&& userPass.getPassword().equals(Encrypter.decrypt(pass1.getPassword())))
 			return new ResponseEntity<UserInfo>(usuario1, HttpStatus.OK);
+		
 		return new ResponseEntity<UserInfo>(HttpStatus.NOT_FOUND);
 		// throw new UserNotFoundException(userPass);
 	}

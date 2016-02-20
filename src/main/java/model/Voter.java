@@ -29,6 +29,7 @@ public class Voter {
 	@NotNull
 	private String nombre;
 	
+	@NotNull
 	@Column(nullable = false, unique = true)
 	private String email;
 	
@@ -38,7 +39,6 @@ public class Voter {
 	@NotNull
 	private String password;
 
-	// Polling station
 	@NotNull
 	private Long pollingStationCode;
 
