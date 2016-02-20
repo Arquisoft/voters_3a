@@ -14,6 +14,7 @@ import model.Voter;
 public interface VoterRepository extends CrudRepository<Voter, Long> {
 		
 	public Voter findByEmail(String email);
+	public Voter findByEmailAndPassword(String email, String password);
 	
 	@SuppressWarnings("unchecked")
 	public Voter save(Voter entity);
