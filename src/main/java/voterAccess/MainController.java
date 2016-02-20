@@ -18,7 +18,7 @@ import exceptions.*;
 @RestController
 public class MainController {
 
-	public static UserInfo usuario1 = new UserInfo("David", "1234546789J", "uo212486", "123A");
+	public static UserInfo usuario1 = new UserInfo("David", "1234546789J", "uo212486", 123L);
 	public static UserPass pass1 = new UserPass("uo212486", "password");
 
 
