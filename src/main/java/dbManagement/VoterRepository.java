@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import model.Voter;
 
 /**
- * Interfaz que soporta las operaciones CRUD para los objeto Voter
+ * Interfaz que soporta las operaciones CRUD para los objetos Voter
  * 
  * @author Dario Rodríguez García (@dariorg)
  * @author David González García (@davidglezz)
