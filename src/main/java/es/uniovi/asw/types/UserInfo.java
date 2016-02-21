@@ -10,13 +10,14 @@ import org.slf4j.LoggerFactory;
 public class UserInfo {
 	private static final Logger log = LoggerFactory.getLogger(UserInfo.class);
 
-    private String name;
-    private String nif;
-    private String email;
-    private Long pollingStationCode;
-    
-    public UserInfo(){}
-    
+	private String name;
+	private String nif;
+	private String email;
+	private Long pollingStationCode;
+
+	public UserInfo() {
+	}
+
 	public UserInfo(String name, String nif, String email, Long pollingStationCode) {
 		this.name = name;
 		this.nif = nif;
@@ -44,7 +45,7 @@ public class UserInfo {
 	public Long getPollingStationCode() {
 		return pollingStationCode;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -6,12 +6,12 @@ import es.uniovi.asw.types.UserPass;
 
 public interface DBManagement {
 
-	Voter save(Voter voter);
+	public Voter save(Voter voter);
 
-	Voter GetVoter(String email);
+	public Voter getVoter(String email);
 
-	Voter GetVoter(UserPass userPass);
+	public Voter getVoter(UserPass userPass);
 
-	Boolean ChangePassword(ChangePass changePass);
+	public Boolean changePassword(ChangePass changePass);
 
 }

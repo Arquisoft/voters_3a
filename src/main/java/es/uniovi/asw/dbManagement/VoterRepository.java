@@ -14,24 +14,22 @@ import es.uniovi.asw.model.Voter;
 
 @Repository
 public interface VoterRepository extends CrudRepository<Voter, Long> {
-		
+
 	public Voter findByEmail(String email);
+
 	public Voter findByEmailAndPassword(String email, String password);
-	
+
 	@SuppressWarnings("unchecked")
 	public Voter save(Voter voter);
 
-	//public Voter findOne(Long primaryKey);
+	// public Voter findOne(Long primaryKey);
 
-	//public Iterable<Voter> findAll();
+	// public Iterable<Voter> findAll();
 
-	//public long count();
+	// public long count();
 
-	//public void delete(Voter entity);
+	// public void delete(Voter entity);
 
-	//public boolean exists(Long primaryKey);
-    
+	// public boolean exists(Long primaryKey);
+
 }
-
-
-// http://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
