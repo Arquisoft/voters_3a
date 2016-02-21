@@ -1,9 +1,9 @@
-package dbManagement;
+package es.uniovi.asw.dbManagement;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import model.Voter;
+import es.uniovi.asw.model.Voter;
 
 /**
  * Interfaz que soporta las operaciones CRUD para los objetos Voter
@@ -19,7 +19,7 @@ public interface VoterRepository extends CrudRepository<Voter, Long> {
 	public Voter findByEmailAndPassword(String email, String password);
 	
 	@SuppressWarnings("unchecked")
-	public Voter save(Voter entity);
+	public Voter save(Voter voter);
 
 	//public Voter findOne(Long primaryKey);
 

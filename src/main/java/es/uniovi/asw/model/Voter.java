@@ -1,4 +1,4 @@
-package model;
+package es.uniovi.asw.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
