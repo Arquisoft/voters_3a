@@ -6,17 +6,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Dario Rodríguez García (@dariorg on GitHub)
+ * @author David González García (@davidglezz on GitHub)
  * 
- * @version 2016.02.11
+ * @version 2016.02.20
  *
- *          Clase POJO del modelo de dominio que recoge los datos de los
+ *          Entidad del modelo de dominio que recoge los datos de los
  *          ciudadanos censados así como el colegio electoral/mesa en el que
  *          emitir su voto.
  * 
  */
+
 @Entity
 @Table(name = "VOTER")
 public class Voter {
@@ -25,25 +28,26 @@ public class Voter {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(nullable = false)
+	@NotNull
 	private String nombre;
 	
+	@NotNull
 	@Column(nullable = false, unique = true)
 	private String email;
 	
-	@Column(nullable = false)
+	@NotNull
 	private String nif;
 	
-	@Column(nullable = false)
+	@NotNull
 	private String password;
 
-	// Polling station
-	private int pollingStationCode;
+	@NotNull
+	private Long pollingStationCode;
 
 	public Voter() {
 	}
 
-	public Voter(String nombre, String email, String password, String nif, int pollingStationCode) {
+	public Voter(String nombre, String email, String password, String nif, long pollingStationCode) {
 		this.nombre = nombre;
 		this.email = email;
 		this.password = password;
@@ -75,11 +79,11 @@ public class Voter {
 		return nif;
 	}
 
-	public int getPollingStationCode() {
+	public long getPollingStationCode() {
 		return pollingStationCode;
 	}
 
-	public void setPollingStationCode(int pollingStationCode) {
+	public void setPollingStationCode(long pollingStationCode) {
 		this.pollingStationCode = pollingStationCode;
 	}
 
@@ -89,6 +93,80 @@ public class Voter {
 
 	public void setNif(String nif) {
 		this.nif = nif;
+	}
+	
+	public boolean same(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Voter other = (Voter) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (nif == null) {
+			if (other.nif != null)
+				return false;
+		} else if (!nif.equals(other.nif))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (pollingStationCode == null) {
+			if (other.pollingStationCode != null)
+				return false;
+		} else if (!pollingStationCode.equals(other.pollingStationCode))
+			return false;
+		return true;
+	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((nif == null) ? 0 : nif.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Voter other = (Voter) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (nif == null) {
+			if (other.nif != null)
+				return false;
+		} else if (!nif.equals(other.nif))
+			return false;
+		return true;
 	}
 
 	@Override

@@ -18,31 +18,32 @@ import exceptions.*;
 @RestController
 public class MainController {
 
-	public static UserInfo usuario1 = new UserInfo("David", "1234546789J", "uo212486", "123A");
+	public static UserInfo usuario1 = new UserInfo("David", "1234546789J", "uo212486", 123L);
 	public static UserPass pass1 = new UserPass("uo212486", "password");
 
-	/*
-	 * @RequestMapping("/") public String landing() { return
-	 * "User Management Service"; }
-	 */
-	
-	// http://stackoverflow.com/questions/25356781/spring-boot-remove-whitelabel-error-page
-	/*
-	 * @RequestMapping("/error") public String errorPage() { return "Error"; }
-	 */
 
-	// Probar con {"login":"uo212486@uniovi.es","password":"password"}
-	@RequestMapping(value = "/user", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE,
-			MediaType.APPLICATION_XML_VALUE })
+	@RequestMapping(
+			value = "/user",
+			method = RequestMethod.POST,
+			produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
+			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<UserInfo> GetVoterInfo(@RequestBody @Valid final UserPass userPass) throws Exception{
+		if (userPass == null) {
+			//throw new ResourceNotFoundException();
+		}
 		if (userPass.getLogin().split("@")[0].equals(pass1.getLogin())
 				&& userPass.getPassword().equals(Encrypter.decrypt(pass1.getPassword())))
 			return new ResponseEntity<UserInfo>(usuario1, HttpStatus.OK);
+		
 		return new ResponseEntity<UserInfo>(HttpStatus.NOT_FOUND);
 		// throw new UserNotFoundException(userPass);
 	}
 
-	@RequestMapping(value = "/ChangePassword", method = RequestMethod.POST)
+	@RequestMapping(
+			value = "/ChangePassword",
+			method = RequestMethod.POST,
+			produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
+			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public UserPass user(@RequestBody @Valid final ChangePass message) throws Exception{
 		if (message.getLogin().split("@")[0].equals(pass1.getLogin())
 				&& message.getOldPassword().equals(Encrypter.decrypt(pass1.getPassword()))) {

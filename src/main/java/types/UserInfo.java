@@ -13,11 +13,11 @@ public class UserInfo {
     private String name;
     private String nif;
     private String email;
-    private String pollingStationCode;
+    private Long pollingStationCode;
     
     public UserInfo(){}
     
-	public UserInfo(String name, String nif, String email, String pollingStationCode) {
+	public UserInfo(String name, String nif, String email, Long pollingStationCode) {
 		this.name = name;
 		this.nif = nif;
 		this.email = email;
@@ -41,7 +41,7 @@ public class UserInfo {
 	}
 
 	@XmlElement
-	public String getPollingStationCode() {
+	public Long getPollingStationCode() {
 		return pollingStationCode;
 	}
 	
