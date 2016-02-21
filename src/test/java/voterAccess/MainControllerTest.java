@@ -24,14 +24,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
+import es.uniovi.asw.types.ChangePass;
+import es.uniovi.asw.types.UserInfo;
+import es.uniovi.asw.types.UserPass;
+import es.uniovi.asw.Application;
 
 import org.springframework.http.MediaType;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-
-import types.ChangePass;
-import types.UserInfo;
-import types.UserPass;
-import voterAccess.Application;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)

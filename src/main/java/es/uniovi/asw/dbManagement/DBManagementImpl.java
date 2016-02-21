@@ -1,18 +1,21 @@
-package dbManagement;
+package es.uniovi.asw.dbManagement;
 
-import javax.transaction.Transactional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.boot.orm.jpa.EntityScan;
+
+//import org.springframework.stereotype.Service;
 //import org.springframework.transaction.annotation.Transactional;
+//import javax.transaction.Transactional;
+import es.uniovi.asw.model.Voter;
+import es.uniovi.asw.types.ChangePass;
+import es.uniovi.asw.types.UserPass;
 
-import model.Voter;
-import types.ChangePass;
-import types.UserPass;
 
-
-@Service
-@Transactional
+//@Service
+//@Transactional
+@EntityScan("es.uniovi.asw.model")
 public class DBManagementImpl implements DBManagement {
 
 	@Autowired

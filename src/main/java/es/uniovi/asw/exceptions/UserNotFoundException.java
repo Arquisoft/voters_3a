@@ -1,8 +1,8 @@
-package exceptions;
+package es.uniovi.asw.exceptions;
 
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import types.UserPass;
+import es.uniovi.asw.types.UserPass;
 
 import org.springframework.http.HttpStatus;
 

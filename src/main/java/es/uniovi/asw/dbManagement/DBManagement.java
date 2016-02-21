@@ -1,8 +1,8 @@
-package dbManagement;
+package es.uniovi.asw.dbManagement;
 
-import model.Voter;
-import types.ChangePass;
-import types.UserPass;
+import es.uniovi.asw.model.Voter;
+import es.uniovi.asw.types.ChangePass;
+import es.uniovi.asw.types.UserPass;
 
 public interface DBManagement {
 

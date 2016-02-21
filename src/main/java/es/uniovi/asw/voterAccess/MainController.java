@@ -1,4 +1,4 @@
-package voterAccess;
+package es.uniovi.asw.voterAccess;
 
 import javax.validation.Valid;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import types.*;
-import exceptions.*;
+import es.uniovi.asw.exceptions.*;
+import es.uniovi.asw.types.*;
 
 @Controller
 @RestController
