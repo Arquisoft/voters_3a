@@ -11,45 +11,64 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.uniovi.asw.exceptions.*;
-import es.uniovi.asw.types.*;
+import es.uniovi.asw.dbManagement.DBManagement;
+import es.uniovi.asw.dbManagement.DBManagementImpl;
+import es.uniovi.asw.model.Voter;
+import es.uniovi.asw.types.ChangePass;
+import es.uniovi.asw.types.UserInfo;
+import es.uniovi.asw.types.UserPass;
 
 @Controller
 @RestController
 public class MainController {
 
-	public static UserInfo usuario1 = new UserInfo("David", "1234546789J", "uo212486", 123L);
-	public static UserPass pass1 = new UserPass("uo212486", "password");
-
-
 	@RequestMapping(
 			value = "/user",
-			method = RequestMethod.POST,
-			produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
+			method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
 			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<UserInfo> GetVoterInfo(@RequestBody @Valid final UserPass userPass) throws Exception{
-		if (userPass == null) {
-			//throw new ResourceNotFoundException();
-		}
-		if (userPass.getLogin().split("@")[0].equals(pass1.getLogin())
-				&& userPass.getPassword().equals(Encrypter.decrypt(pass1.getPassword())))
-			return new ResponseEntity<UserInfo>(usuario1, HttpStatus.OK);
+	
+	public ResponseEntity<UserInfo> GetVoterInfo(@RequestBody @Valid final UserPass userPass) throws Exception {
 		
-		return new ResponseEntity<UserInfo>(HttpStatus.NOT_FOUND);
-		// throw new UserNotFoundException(userPass);
+		if (userPass == null) {
+			// throw new ResourceNotFoundException();
+			return new ResponseEntity<UserInfo>(HttpStatus.BAD_REQUEST);
+		}
+		
+		DBManagement db = new DBManagementImpl();
+		Voter voter = db.getVoter(userPass);
+		
+		if (voter == null) {
+			// throw new UserNotFoundException(userPass);
+			return new ResponseEntity<UserInfo>(HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<UserInfo>(new UserInfo(voter), HttpStatus.OK);
 	}
+
 
 	@RequestMapping(
 			value = "/ChangePassword",
-			method = RequestMethod.POST,
-			produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
+			method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
 			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public UserPass user(@RequestBody @Valid final ChangePass message) throws Exception{
-		if (message.getLogin().split("@")[0].equals(pass1.getLogin())
-				&& message.getOldPassword().equals(Encrypter.decrypt(pass1.getPassword()))) {
-			pass1 = new UserPass(message.getLogin(), message.getNewPassword());
-			return pass1;
+	
+	public ResponseEntity<String> ChangePassword(@RequestBody @Valid final ChangePass changePass) throws Exception {
+		
+		if (changePass == null) {
+			// throw new ResourceNotFoundException();
+			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
-		return null;
+		
+		DBManagement db = new DBManagementImpl();
+		Voter voter = db.getVoter(new UserPass(changePass.getLogin(), changePass.getOldPassword()));
+		
+		if (voter == null) {
+			// throw new UserNotFoundException(userPass);
+			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+		}
+		
+		voter.setPassword(changePass.getNewPassword());
+		db.save(voter);
+		
+		return new ResponseEntity<String>(HttpStatus.OK);
 	}
 }

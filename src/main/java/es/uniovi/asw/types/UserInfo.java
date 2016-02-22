@@ -6,6 +6,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import es.uniovi.asw.model.Voter;
+
 @XmlRootElement(name = "UserInfo")
 public class UserInfo {
 	private static final Logger log = LoggerFactory.getLogger(UserInfo.class);
@@ -23,6 +25,13 @@ public class UserInfo {
 		this.email = email;
 		this.pollingStationCode = pollingStationCode;
 		log.info(this.toString());
+	}
+
+	public UserInfo(Voter voter) {
+		this.name = voter.getNombre();
+		this.nif = voter.getNif();
+		this.email = voter.getEmail();
+		this.pollingStationCode = voter.getPollingStationCode();
 	}
 
 	@XmlElement
