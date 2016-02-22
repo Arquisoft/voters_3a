@@ -14,9 +14,9 @@ import javax.validation.constraints.NotNull;
  * 
  * @version 2016.02.20
  *
- *          Entidad del modelo de dominio que recoge los datos de los
- *          ciudadanos censados así como el colegio electoral/mesa en el que
- *          emitir su voto.
+ *          Entidad del modelo de dominio que recoge los datos de los ciudadanos
+ *          censados así como el colegio electoral/mesa en el que emitir su
+ *          voto.
  * 
  */
 
@@ -30,14 +30,14 @@ public class Voter {
 
 	@NotNull
 	private String nombre;
-	
+
 	@NotNull
 	@Column(nullable = false, unique = true)
 	private String email;
-	
+
 	@NotNull
 	private String nif;
-	
+
 	@NotNull
 	private String password;
 
@@ -94,7 +94,7 @@ public class Voter {
 	public void setNif(String nif) {
 		this.nif = nif;
 	}
-	
+
 	public boolean same(Object obj) {
 		if (this == obj)
 			return true;
@@ -108,11 +108,11 @@ public class Voter {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (id == null) {
+		/*if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
+			return false;*/
 		if (nif == null) {
 			if (other.nif != null)
 				return false;
@@ -135,8 +135,6 @@ public class Voter {
 			return false;
 		return true;
 	}
-	
-	
 
 	@Override
 	public int hashCode() {

@@ -1,13 +1,8 @@
 package es.uniovi.asw.dbManagement;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-//import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-//import javax.transaction.Transactional;
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.types.ChangePass;
 import es.uniovi.asw.types.UserPass;
@@ -19,9 +14,8 @@ public class DBManagementImpl implements DBManagement {
 	private VoterRepository voterRepository;
 
 	public DBManagementImpl() {
-
 	}
-	
+
 	@Override
 	public Voter save(Voter voter) {
 		return voterRepository.save(voter);

@@ -1,11 +1,9 @@
 package es.uniovi.asw.exceptions;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import es.uniovi.asw.types.UserPass;
-
-import org.springframework.http.HttpStatus;
-
 
 // No usado actualmente
 @ResponseStatus(HttpStatus.NOT_FOUND)
