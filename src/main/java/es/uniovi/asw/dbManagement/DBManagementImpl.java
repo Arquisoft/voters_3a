@@ -1,11 +1,13 @@
 package es.uniovi.asw.dbManagement;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.types.ChangePass;
 import es.uniovi.asw.types.UserPass;
 
+@Component
 public class DBManagementImpl implements DBManagement {
 
 	@Autowired
@@ -39,5 +41,10 @@ public class DBManagementImpl implements DBManagement {
 		voter.setPassword(changePass.getNewPassword());
 		voterRepository.save(voter);
 		return true;
+	}
+
+	@Override
+	public VoterRepository _getVoterRepository() {
+		return voterRepository;
 	}
 }
