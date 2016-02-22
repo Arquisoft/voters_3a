@@ -1,13 +1,18 @@
 package es.uniovi.asw.dbManagement;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.stereotype.Component;
+import org.springframework.test.context.web.WebAppConfiguration;
 
+import es.uniovi.asw.Application;
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.types.ChangePass;
 import es.uniovi.asw.types.UserPass;
 
 @Component
+@SpringApplicationConfiguration(classes = Application.class)
+@WebAppConfiguration
 public class DBManagementImpl implements DBManagement {
 
 	@Autowired

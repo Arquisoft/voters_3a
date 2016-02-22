@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -13,6 +14,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import es.uniovi.asw.Application;
 import es.uniovi.asw.dbManagement.DBManagement;
 import es.uniovi.asw.dbManagement.DBManagementImpl;
+import es.uniovi.asw.dbManagement.VoterRepository;
 import es.uniovi.asw.model.Voter;;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,7 +25,15 @@ public class DBManagementTest {
 
 	DBManagement db = new DBManagementImpl();
 
-		
+	@Autowired
+	VoterRepository voterRepository;
+	
+    @Test
+    public void shouldWireRepositoryLocal() {
+    	assertNotNull(voterRepository);
+    }
+    
+    
     @Test
     public void shouldWireRepository() {
         assertNotNull(db._getVoterRepository());
