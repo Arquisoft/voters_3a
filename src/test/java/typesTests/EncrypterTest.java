@@ -1,11 +1,11 @@
-package voterAccess;
+package typesTests;
 
 import static org.junit.Assert.*;
 
 
 import org.junit.Test;
 
-public class Encrypter {
+public class EncrypterTest {
 
 	@Test
 	public void testEncryptDecrypt() throws Exception {

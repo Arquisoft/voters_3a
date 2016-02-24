@@ -1,7 +1,7 @@
 /**
  * 
  */
-package voterAccess;
+package typesTests;
 
 import static org.junit.Assert.*;
 
@@ -60,6 +60,4 @@ public class UserPassTest {
 		UserPass up = new UserPass(login,pass);
 		assertTrue(up.toString().equals("UserPass [login=" + login + ", password=" + Encrypter.encrypt(pass) + "]"));
 	}
-	
-
 }
