@@ -1,7 +1,7 @@
 /**
  * 
  */
-package voterAccess;
+package typesTests;
 
 import static org.junit.Assert.*;
 
