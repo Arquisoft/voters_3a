@@ -3,7 +3,7 @@ package voterAccess;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
+
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -31,9 +31,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
 import es.uniovi.asw.Application;
-import es.uniovi.asw.types.ChangePass;
+
 import es.uniovi.asw.types.UserInfo;
-import es.uniovi.asw.types.UserPass;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -79,14 +79,14 @@ public class MainControllerTest {
 	/*
 	 * 
 	 * 
-	 * BLOQUE DE TESTS DEDICADOS AL: Peticion, respuesta en Json. 
+	 * BLOQUE DE TESTS DEDICADOS AL: Peticion, respuesta  y Json. 
 	 * 
 	 * 
 	 */
 
 	@Test
 	public void getLanding() throws Exception {
-		String userURI = base.toString() + "/user";
+		//String userURI = base.toString() + "/user";
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		assertThat(response.hasBody(), equalTo(true));
 		if (porPantalla) { System.out.println(response.getBody()); }
@@ -198,14 +198,8 @@ public class MainControllerTest {
 	 * BLOQUE DE TESTS DEDICADOS AL: DOMINIO
 	 * 
 	 */
-	//UserPass
-	@Test
-	public void testUserPass() throws Exception {
-		String login="loglog"; 
-		String pass="paspas";
-		UserPass up = new UserPass(login,pass);
-		assertTrue(up.toString().equals("UserPass [login=" + login + ", password=" + pass + "]"));
-	}	
+
+
 	
 	//UserInfo
 	@Test
@@ -250,21 +244,5 @@ public class MainControllerTest {
 		assertFalse(ui1.equals(ui2));
 	}
 	
-	//ChangePass 
-	@Test
-	public void testUserChangePass() throws Exception {
-		String login="loglog"; 
-		String pass="paspas";
-		String passNew="masmas";
-		/*UserPass up = new UserPass(login,pass);
-		assertTrue(up.getPassword().equals(pass));*/
-		ChangePass cp = new ChangePass();
-		assertNull(cp.getLogin());
-		assertNull(cp.getNewPassword());
-		assertNull(cp.getOldPassword());
-		cp = new ChangePass(login,pass,passNew);
-		assertTrue(login.equals(cp.getLogin()));
-		assertTrue(pass.equals(cp.getOldPassword()));
-		assertTrue(passNew.equals(cp.getNewPassword()));
-	}	
+
 }
