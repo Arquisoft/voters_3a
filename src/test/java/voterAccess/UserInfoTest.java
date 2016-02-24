@@ -90,9 +90,7 @@ public class UserInfoTest {
 		assertFalse(uin.equals(ui)); // null ref no
 		assertFalse(ui.equals(uid)); // dato y ref diferentes
 	
-		assertTrue(ui.equals(ui2)); // todo ok :D 
-		
-		
+		assertTrue(ui.equals(ui2)); // todo ok :D
 	}
 
 	@Test
