@@ -1,4 +1,4 @@
-package voterAccess;
+package es.uniovi.asw;
 
 
 import org.springframework.boot.SpringApplication;

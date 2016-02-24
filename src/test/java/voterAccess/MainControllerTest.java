@@ -1,20 +1,26 @@
 package voterAccess;
 
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.net.URL;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.*;
-
 import org.springframework.boot.test.IntegrationTest;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -24,14 +30,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
-
-import org.springframework.http.MediaType;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-
-import types.ChangePass;
-import types.UserInfo;
-import types.UserPass;
-import voterAccess.Application;
+import es.uniovi.asw.Application;
+import es.uniovi.asw.types.ChangePass;
+import es.uniovi.asw.types.UserInfo;
+import es.uniovi.asw.types.UserPass;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -224,27 +226,27 @@ public class MainControllerTest {
 		UserInfo ui2 = new UserInfo();
 		//compara 2 null
 		assertTrue(ui1.equals(ui2));
-		ui2 = new UserInfo("name", "nif", "email", "pollingStationCode");
+		ui2 = new UserInfo("name", "nif", "email", 123L);
 		// compara un null con un bien formado
 		assertFalse(ui1.equals(ui2));
 		// comapra 2 bien formados
-		ui1 = new UserInfo("name", "nif", "email", "pollingStationCode");
+		ui1 = new UserInfo("name", "nif", "email", 123L);
 		assertTrue(ui1.equals(ui2));
 		//compara dif nif
-		ui1 = new UserInfo("pepe", "25", "email@dom.com", "1");
-		ui2 = new UserInfo("pepe", "50", "email@dom.com", "1");
+		ui1 = new UserInfo("pepe", "25", "email@dom.com", 1L);
+		ui2 = new UserInfo("pepe", "50", "email@dom.com", 1L);
 		assertFalse(ui1.equals(ui2));
 		//compara dif nombre
-		ui1 = new UserInfo("pepe", "25", "email@dom.com", "1");
-		ui2 = new UserInfo("juan", "25", "email@dom.com", "1");
+		ui1 = new UserInfo("pepe", "25", "email@dom.com", 1L);
+		ui2 = new UserInfo("juan", "25", "email@dom.com", 1L);
 		assertFalse(ui1.equals(ui2));
 		//compara dif colegio electoral
-		ui1 = new UserInfo("pepe", "50", "email@dom.com", "8");
-		ui2 = new UserInfo("pepe", "50", "email@dom.com", "1");
+		ui1 = new UserInfo("pepe", "50", "email@dom.com", 8L);
+		ui2 = new UserInfo("pepe", "50", "email@dom.com", 1L);
 		assertFalse(ui1.equals(ui2));
 		//compara dif correo
-		ui1 = new UserInfo("pepe", "50", "mail@dom.com", "1");
-		ui2 = new UserInfo("pepe", "50", "email@hotmail.com", "1");
+		ui1 = new UserInfo("pepe", "50", "mail@dom.com", 1L);
+		ui2 = new UserInfo("pepe", "50", "email@hotmail.com", 1L);
 		assertFalse(ui1.equals(ui2));
 	}
 	
