@@ -44,8 +44,7 @@ public class Voter {
 	@NotNull
 	private Long pollingStationCode;
 
-	public Voter() {
-	}
+	public Voter() {}
 
 	public Voter(String nombre, String email, String password, String nif, long pollingStationCode) {
 		this.nombre = nombre;
@@ -79,7 +78,7 @@ public class Voter {
 		return nif;
 	}
 
-	public long getPollingStationCode() {
+	public Long getPollingStationCode() {
 		return pollingStationCode;
 	}
 
