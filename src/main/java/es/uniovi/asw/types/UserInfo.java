@@ -17,8 +17,7 @@ public class UserInfo {
 	private String email;
 	private Long pollingStationCode;
 
-	public UserInfo() {
-	}
+	public UserInfo() {	}
 
 	public UserInfo(String name, String nif, String email, Long pollingStationCode) {
 		this.name = name;
@@ -37,22 +36,22 @@ public class UserInfo {
 
 	@XmlElement
 	public String getName() {
-		return name;
+		return name;	
 	}
 
 	@XmlElement
 	public String getNif() {
-		return nif;
+		return nif;	
 	}
 
 	@XmlElement
 	public String getEmail() {
-		return email;
+		return email;	
 	}
 
 	@XmlElement
 	public Long getPollingStationCode() {
-		return pollingStationCode;
+		return pollingStationCode;	
 	}
 
 	@Override
