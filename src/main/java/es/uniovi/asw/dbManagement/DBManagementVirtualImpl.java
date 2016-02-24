@@ -42,9 +42,13 @@ public class DBManagementVirtualImpl implements DBManagement {
 
 	@Override
 	public Boolean changePassword(ChangePass changePass) {
+		
+		if (changePass.getOldPassword() == null || changePass.getOldPassword().equals(changePass.getNewPassword()))
+			return false;
+		
 		Voter voter = voterRepository.get(changePass.getLogin());
-
-		if (voter == null || !voter.getPassword().equals(changePass.getOldPassword()))
+		
+		if (voter == null || !voter.getPassword().equals(changePass.getOldPassword()) )
 			return false;
 
 		voter.setPassword(changePass.getNewPassword());
