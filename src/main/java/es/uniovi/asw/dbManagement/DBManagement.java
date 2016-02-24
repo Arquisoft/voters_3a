@@ -14,6 +14,6 @@ public interface DBManagement {
 
 	public Boolean changePassword(ChangePass changePass);
 	
-	public VoterRepository _getVoterRepository();
+	//public VoterRepository _getVoterRepository();
 
 }
