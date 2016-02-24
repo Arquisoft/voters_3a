@@ -94,7 +94,7 @@ public class Voter {
 		this.nif = nif;
 	}
 
-	public boolean same(Object obj) {
+	/*public boolean same(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -112,7 +112,10 @@ public class Voter {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;*/
-		if (nif == null) {
+	/**/
+	/*
+		 if (nif == null) {
+		 
 			if (other.nif != null)
 				return false;
 		} else if (!nif.equals(other.nif))
@@ -134,6 +137,7 @@ public class Voter {
 			return false;
 		return true;
 	}
+	*/
 
 	@Override
 	public int hashCode() {
