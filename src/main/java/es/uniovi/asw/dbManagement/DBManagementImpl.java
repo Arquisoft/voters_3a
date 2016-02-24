@@ -1,22 +1,12 @@
 package es.uniovi.asw.dbManagement;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import es.uniovi.asw.Application;
-import es.uniovi.asw.exceptions.UserNotFoundException;
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.types.ChangePass;
 import es.uniovi.asw.types.UserPass;
 
-@Component
-@SpringApplicationConfiguration(classes = Application.class)
-@WebAppConfiguration
+//@Component
+//@SpringApplicationConfiguration(classes = Application.class)
+//@WebAppConfiguration
 public class DBManagementImpl implements DBManagement {
 
 	private VoterRepository voterRepository;
@@ -57,7 +47,7 @@ public class DBManagementImpl implements DBManagement {
 		return true;
 	}
 
-	@Override
+	//@Override
 	public VoterRepository _getVoterRepository() {
 		return voterRepository;
 	}
