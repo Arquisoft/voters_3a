@@ -1,5 +1,6 @@
 package dbManagerTests;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -15,7 +16,8 @@ import es.uniovi.asw.Application;
 import es.uniovi.asw.dbManagement.DBManagement;
 import es.uniovi.asw.dbManagement.DBManagementImpl;
 import es.uniovi.asw.dbManagement.VoterRepository;
-import es.uniovi.asw.model.Voter;;
+import es.uniovi.asw.model.Voter;
+import es.uniovi.asw.types.ChangePass;;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -53,11 +55,25 @@ public class DBManagementTest {
 	public void get() {
 		db.save(new Voter("Antonio", "antonio@uniovi.com", "pass", "1234566K", 412));
 		Voter voter1 = new Voter("Antonio", "antonio@uniovi.com", "pass", "1234566K", 412);
-		Voter voter2 = db.getVoter("ant@uni.com");
+		Voter voter2 = db.getVoter("antonio@uniovi.com");
 		assertTrue(voter1.equals(voter2));
 	}
     
-    //public Boolean changePassword(ChangePass changePass);
+    @Test
+    public void changePassword()
+    {
+    	db.save(new Voter("Antonio", "antonio@uniovi.com", "pass", "1234566K", 412));
+    	String login= "antonio@uniovi.com";
+    	String pass = "pass";
+    	String nuevaPass = "newPass";
+    	ChangePass cp= new ChangePass();
+    	assertFalse(db.changePassword(cp));
+    	cp= new ChangePass(login, pass, pass);
+    	assertFalse(db.changePassword(cp));
+    	cp= new ChangePass(login, pass, nuevaPass);
+    	assertTrue(db.changePassword(cp));
+   	
+    }
     
 	@Test
 	public void save() {
