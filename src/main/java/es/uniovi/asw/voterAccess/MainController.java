@@ -2,7 +2,6 @@ package es.uniovi.asw.voterAccess;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.uniovi.asw.dbManagement.DBManagement;
-import es.uniovi.asw.dbManagement.DBManagementImpl;
-import es.uniovi.asw.dbManagement.VoterRepository;
+import es.uniovi.asw.dbManagement.DBManagementVirtualImpl;
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.types.ChangePass;
 import es.uniovi.asw.types.UserInfo;
@@ -24,8 +22,8 @@ import es.uniovi.asw.types.UserPass;
 @RestController
 public class MainController {
 	
-	@Autowired
-	private VoterRepository voterRepository;
+	//@Autowired
+	//private VoterRepository voterRepository;
 
 	@RequestMapping(
 			value = "/user",
@@ -39,7 +37,7 @@ public class MainController {
 			return new ResponseEntity<UserInfo>(HttpStatus.BAD_REQUEST);
 		}
 		
-		DBManagement db = new DBManagementImpl(voterRepository);
+		DBManagement db = new DBManagementVirtualImpl();
 		Voter voter = db.getVoter(userPass);
 		
 		if (voter == null) {
@@ -63,7 +61,7 @@ public class MainController {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		
-		DBManagement db = new DBManagementImpl();
+		DBManagement db = new DBManagementVirtualImpl();
 		Voter voter = db.getVoter(new UserPass(changePass.getLogin(), changePass.getOldPassword()));
 		
 		if (voter == null) {
