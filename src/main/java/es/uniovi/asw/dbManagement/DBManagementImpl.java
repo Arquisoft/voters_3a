@@ -9,6 +9,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import es.uniovi.asw.Application;
+import es.uniovi.asw.exceptions.UserNotFoundException;
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.types.ChangePass;
 import es.uniovi.asw.types.UserPass;
@@ -44,11 +45,13 @@ public class DBManagementImpl implements DBManagement {
 
 	@Override
 	public Boolean changePassword(ChangePass changePass) {
+		if (changePass == null || changePass.getLogin() == null)
+			return false;
+		
 		Voter voter = voterRepository.findByEmail(changePass.getLogin());
-
+		
 		if (voter == null || !voter.getPassword().equals(changePass.getOldPassword()))
 			return false;
-
 		voter.setPassword(changePass.getNewPassword());
 		voterRepository.save(voter);
 		return true;
