@@ -38,9 +38,9 @@ public class DBManagementTest {
     }
     
     
-    //@Test
+    @Test
     public void shouldWireRepository() {
-        assertNotNull(((DBManagementImpl)db)._getVoterRepository());
+        assertNotNull(db._getVoterRepository());
     }
     
     @Test
@@ -55,9 +55,15 @@ public class DBManagementTest {
 	
     @Test
 	public void get() {
+<<<<<<< b5b4e44523e57b7476c3649f2c824ccbe60a56cf
+		db.save(new Voter("Antonio", "antonio@uniovi.com", "pass", "1234566K", 412));
+		Voter voter1 = new Voter("Antonio", "antonio@uniovi.com", "pass", "1234566K", 412);
+		Voter voter2 = db.getVoter("antonio@uniovi.com");
+=======
 		db.save(new Voter("User1", "user1@mail.com", "user1", "12312321Q", 123));
 		Voter voter1 = new Voter("User1", "user1@mail.com", "user1", "12312321Q", 123);
 		Voter voter2 = db.getVoter("user1@mail.com");
+>>>>>>> Test
 		assertTrue(voter1.equals(voter2));
 	}
     

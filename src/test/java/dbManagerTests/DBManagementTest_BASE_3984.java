@@ -1,6 +1,5 @@
 package dbManagerTests;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -15,10 +14,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import es.uniovi.asw.Application;
 import es.uniovi.asw.dbManagement.DBManagement;
 import es.uniovi.asw.dbManagement.DBManagementImpl;
-import es.uniovi.asw.dbManagement.DBManagementVirtualImpl;
 import es.uniovi.asw.dbManagement.VoterRepository;
-import es.uniovi.asw.model.Voter;
-import es.uniovi.asw.types.ChangePass;;
+import es.uniovi.asw.model.Voter;;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -26,8 +23,7 @@ import es.uniovi.asw.types.ChangePass;;
 @IntegrationTest({ "server.port=0" })
 public class DBManagementTest {
 
-	//DBManagement db = new DBManagementImpl();
-	DBManagement db = new DBManagementVirtualImpl();
+	DBManagement db = new DBManagementImpl();
 
 	@Autowired
 	VoterRepository voterRepository;
@@ -45,8 +41,8 @@ public class DBManagementTest {
     
     @Test
 	public void getVoterByEmail() {
-		Voter voter1 = new Voter("User1", "user1@mail.com", "user1", "12312321Q", 123);
-		Voter voter2 = db.getVoter("user1@mail.com");
+		Voter voter1 = new Voter("Antonio", "uo212486@uniovi.es", "password", "123456789K", 123);
+		Voter voter2 = db.getVoter("uo212486@uniovi.es");
 		assertTrue(voter1.equals(voter2));
 	}
 
@@ -55,33 +51,19 @@ public class DBManagementTest {
 	
     @Test
 	public void get() {
-		db.save(new Voter("User1", "user1@mail.com", "user1", "12312321Q", 123));
-		Voter voter1 = new Voter("User1", "user1@mail.com", "user1", "12312321Q", 123);
-		Voter voter2 = db.getVoter("user1@mail.com");
+		db.save(new Voter("Antonio", "antonio@uniovi.com", "pass", "1234566K", 412));
+		Voter voter1 = new Voter("Antonio", "antonio@uniovi.com", "pass", "1234566K", 412);
+		Voter voter2 = db.getVoter("ant@uni.com");
 		assertTrue(voter1.equals(voter2));
 	}
     
-    @Test
-    public void changePassword()
-    {
-    	db.save(new Voter("Antonio", "antonio@uniovi.com", "pass", "1234566K", 412));
-    	String login= "antonio@uniovi.com";
-    	String pass = "pass";
-    	String nuevaPass = "newPass";
-    	ChangePass cp= new ChangePass();
-    	assertFalse(db.changePassword(cp));
-    	cp= new ChangePass(login, pass, pass);
-    	assertFalse(db.changePassword(cp));
-    	cp= new ChangePass(login, pass, nuevaPass);
-    	assertTrue(db.changePassword(cp));
-   	
-    }
+    //public Boolean changePassword(ChangePass changePass);
     
 	@Test
 	public void save() {
-		db.save(new Voter("User10", "user10@mail.com", "user10", "1111111X", 123));
-		Voter voter1 = new Voter("User10", "user10@mail.com", "user10", "1111111X", 123);
-		Voter voter2 = db.getVoter("user10@mail.com");
+		db.save(new Voter("Antonio", "antonio@uniovi.com", "pass", "1234566K", 412));
+		Voter voter1 = new Voter("Antonio", "antonio@uniovi.com", "pass", "1234566K", 412);
+		Voter voter2 = db.getVoter("ant@uni.com");
 		assertTrue(voter1.equals(voter2));
 	}
 

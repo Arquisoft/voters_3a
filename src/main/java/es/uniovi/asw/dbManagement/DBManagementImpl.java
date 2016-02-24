@@ -35,11 +35,13 @@ public class DBManagementImpl implements DBManagement {
 
 	@Override
 	public Boolean changePassword(ChangePass changePass) {
+		if (changePass == null || changePass.getLogin() == null)
+			return false;
+		
 		Voter voter = voterRepository.findByEmail(changePass.getLogin());
-
+		
 		if (voter == null || !voter.getPassword().equals(changePass.getOldPassword()))
 			return false;
-
 		voter.setPassword(changePass.getNewPassword());
 		voterRepository.save(voter);
 		return true;
