@@ -9,6 +9,13 @@ Los usuarios podran acceder al sistema para comprobar que han sido dados de alta
 
 Dispone de un sencillo interfaz html para facilitar la interaccion con el usuario.
 
+Pasos para lanzar el sistema
+=======
+
+* Descargar el codigo del repositorio mediante la instruccion de git ```git clone https://github.com/Arquisoft/voters_3a```
+* Lanzar la aplicacion mediante la instruccion de maven ´´´mvn spring-boot:run´´´
+* Ahora tendremos la aplicacion corriendo en local y tan solo tendremos que poner en el navegador localhost:8080
+
 Authors
 =======
 * Amir Housein Tofigh Halati
