@@ -62,7 +62,7 @@ public class MainController {
 		}
 		
 		DBManagement db = new DBManagementVirtualImpl();
-		Voter voter = db.getVoter(new UserPass(changePass.getLogin(), changePass.getOldPassword()));
+		Voter voter = db.getVoter(changePass.getLogin()); //changePass.getOldPassword()
 		
 		if (voter == null) {
 			// throw new UserNotFoundException(userPass);
@@ -72,6 +72,6 @@ public class MainController {
 		voter.setPassword(changePass.getNewPassword());
 		db.save(voter);
 		
-		return new ResponseEntity<String>(HttpStatus.OK);
+		return new ResponseEntity<String>("{}",HttpStatus.OK);
 	}
 }

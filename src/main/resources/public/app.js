@@ -17,7 +17,7 @@ $(document).ready(
 				'el' : "#voters-passwd form",
 				'url' : "/ChangePassword",
 				'done' : function(response, textStatus, jqXHR) {
-					console.log(response, textStatus);
+					addAlert("Tu contraseña se actualizo correctamente", 'success');
 				},
 				'error404' : function() {
 					addAlert("No permitido.");
