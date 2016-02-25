@@ -14,7 +14,7 @@ Pasos para lanzar el sistema
 
 * Descargar el codigo del repositorio mediante la instruccion de git ```git clone https://github.com/Arquisoft/voters_3a```
 * Lanzar la aplicacion mediante la instruccion de maven ```mvn spring-boot:run```
-* Ahora tendremos la aplicacion corriendo en local y tan solo tendremos que poner en el navegador localhost:8080
+* Ahora tendremos la aplicacion corriendo en local y tan solo tendremos que poner en el navegador ```localhost:8080```
 
 Authors
 =======
@@ -22,9 +22,3 @@ Authors
 * Carlos Lopez de Juan
 * David González García
 * Raul Barba Tamargo
-
-
-
-
-
-
