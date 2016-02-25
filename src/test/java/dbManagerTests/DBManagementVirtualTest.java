@@ -24,7 +24,7 @@ import es.uniovi.asw.types.ChangePass;;
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest({ "server.port=0" })
-public class DBManagementTest {
+public class DBManagementVirtualTest {
 
 	//DBManagement db = new DBManagementImpl();
 	DBManagement db = new DBManagementVirtualImpl();
@@ -40,7 +40,7 @@ public class DBManagementTest {
     
     //@Test
     public void shouldWireRepository() {
-        assertNotNull(((DBManagementImpl)db)._getVoterRepository());
+    	assertNotNull(((DBManagementImpl)db)._getVoterRepository());
     }
     
     @Test

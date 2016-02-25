@@ -93,52 +93,7 @@ public class Voter {
 	public void setNif(String nif) {
 		this.nif = nif;
 	}
-
-	/*public boolean same(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Voter other = (Voter) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		/*if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;*/
-	/**/
-	/*
-		 if (nif == null) {
-		 
-			if (other.nif != null)
-				return false;
-		} else if (!nif.equals(other.nif))
-			return false;
-		if (nombre == null) {
-			if (other.nombre != null)
-				return false;
-		} else if (!nombre.equals(other.nombre))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (pollingStationCode == null) {
-			if (other.pollingStationCode != null)
-				return false;
-		} else if (!pollingStationCode.equals(other.pollingStationCode))
-			return false;
-		return true;
-	}
-	*/
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

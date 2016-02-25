@@ -11,8 +11,7 @@ public class DBManagementImpl implements DBManagement {
 
 	private VoterRepository voterRepository;
 
-	public DBManagementImpl() {
-	}
+	public DBManagementImpl() {}
 	
 	public DBManagementImpl(VoterRepository voterRepository) {
 		this.voterRepository = voterRepository;
@@ -21,6 +20,10 @@ public class DBManagementImpl implements DBManagement {
 	@Override
 	public Voter save(Voter voter) {
 		return voterRepository.save(voter);
+	}
+	
+	public void save2(Voter voter) {
+		voterRepository.save(voter);
 	}
 
 	@Override
