@@ -16,12 +16,10 @@ import voterAccess.*;
 				EncrypterTest.class, 
 				UserInfoTest.class, 
 				UserPassTest.class,
-				DBManagementVirtualTest.class,
-				DBManagementImplTest.class,
+				DBManagementVirtualTest.class,				
 				ExceptionTests.class,
 				VoterTest.class,
-				MainControllerTest.class
+				MainControllerTest.class,
+				DBManagementImplTest.class,
 				})
-public class AllTests {
-
-}
+public class AllTests {}
