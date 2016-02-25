@@ -2,6 +2,7 @@ package dbManagerTests;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,5 +71,10 @@ public class DBManagementImplTest {
 	public void test_getVoterRepository() {
 		fail("Not yet implemented");
 	}
-
+	
+	@After
+	public void finalizar()
+	{
+		voterRepository=null;
+	}
 }

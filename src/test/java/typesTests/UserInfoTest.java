@@ -109,5 +109,49 @@ public class UserInfoTest {
 		assertTrue(("UserInfo [name="+name+", nif="+nif+", email="+email+", pollingStationCode="+pollingStationCode+"]").equals(ui.toString()));
 		
 	}
+	
+
+	@Test
+	public void testUserInfoVacio() throws Exception {
+
+		UserInfo ui = new UserInfo();
+		assertTrue(ui.hashCode()==923521);
+		assertTrue(ui.toString().equals("UserInfo [name=null, "
+				+ "nif=null, "
+				+ "email=null, "
+				+ "pollingStationCode=null]"));
+	}
+
+	@Test
+	public void testUserInfoCompare() throws Exception {
+
+		UserInfo ui1 = new UserInfo();
+		UserInfo ui2 = new UserInfo();
+		//compara 2 null
+		assertTrue(ui1.equals(ui2));
+		ui2 = new UserInfo("name", "nif", "email", 123L);
+		// compara un null con un bien formado
+		assertFalse(ui1.equals(ui2));
+		// comapra 2 bien formados
+		ui1 = new UserInfo("name", "nif", "email", 123L);
+		assertTrue(ui1.equals(ui2));
+		//compara dif nif
+		ui1 = new UserInfo("pepe", "25", "email@dom.com", 1L);
+		ui2 = new UserInfo("pepe", "50", "email@dom.com", 1L);
+		assertFalse(ui1.equals(ui2));
+		//compara dif nombre
+		ui1 = new UserInfo("pepe", "25", "email@dom.com", 1L);
+		ui2 = new UserInfo("juan", "25", "email@dom.com", 1L);
+		assertFalse(ui1.equals(ui2));
+		//compara dif colegio electoral
+		ui1 = new UserInfo("pepe", "50", "email@dom.com", 8L);
+		ui2 = new UserInfo("pepe", "50", "email@dom.com", 1L);
+		assertFalse(ui1.equals(ui2));
+		//compara dif correo
+		ui1 = new UserInfo("pepe", "50", "mail@dom.com", 1L);
+		ui2 = new UserInfo("pepe", "50", "email@hotmail.com", 1L);
+		assertFalse(ui1.equals(ui2));
+	}
+
 
 }
